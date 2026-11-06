@@ -1,7 +1,16 @@
+"use client";
+
 import React from 'react';
+import { motion } from 'framer-motion';
 import { BookOpen, Download, ShieldCheck, HeartHandshake, ArrowRight, Mail, Phone, Landmark, Lock } from 'lucide-react';
 
 export default function GuiaDaMulherLandingPage() {
+  const fadeIn = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 }
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-purple-200">
       {/* Navbar */}
@@ -25,7 +34,7 @@ export default function GuiaDaMulherLandingPage() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900 text-white">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div>
+          <motion.div initial="initial" animate="animate" variants={fadeIn}>
             <span className="px-3 py-1 bg-purple-800/50 text-purple-200 rounded-full text-sm font-semibold tracking-wide border border-purple-700/50">
               Projeto Cultural & Social
             </span>
@@ -43,8 +52,13 @@ export default function GuiaDaMulherLandingPage() {
                 Conhecer o Projeto <ArrowRight className="w-5 h-5" />
               </a>
             </div>
-          </div>
-          <div className="relative">
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
             <div className="aspect-[3/4] bg-gradient-to-tr from-purple-800 to-slate-700 rounded-2xl shadow-2xl overflow-hidden border-4 border-slate-800 flex items-center justify-center">
               <BookOpen className="w-32 h-32 text-purple-300 opacity-50" />
               <div className="absolute bottom-0 w-full p-8 bg-gradient-to-t from-slate-900 to-transparent">
@@ -52,7 +66,7 @@ export default function GuiaDaMulherLandingPage() {
                 <p className="text-purple-300 text-sm">Privacidade e segurança que a mídia física garante.</p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
